@@ -1,0 +1,15 @@
+services:
+  authDB:
+    image: mysql
+    env_file: 
+      - ./env/auth/auth.db.env
+    ports:
+      - '3308:3306'
+    command: --default-authentication-plugin=mysql_native_password
+
+  memberDB:
+    image: postgres:13.11-bullseye
+    env_file: 
+      - ./env/member/member.db.env
+    ports:
+      - 5434:5432
