@@ -2,6 +2,7 @@ import { NestFactory } from "@nestjs/core";
 import { NestExpressApplication } from "@nestjs/platform-express";
 import { RootModule } from "./di/root.module";
 import { Logger } from "@nestjs/common";
+import { ConfigService } from "@nestjs/config";
 
 export class ServerApplication {
 
@@ -12,8 +13,10 @@ export class ServerApplication {
 
         const app: NestExpressApplication = await NestFactory.create<NestExpressApplication>(RootModule);
 
-        this.host = "localhost";
-        this.port = 3000;
+        const configService = app.get(ConfigService);
+
+        this.host = configService.getOrThrow<string>("AUTH_APP.HOST");
+        this.port = configService.getOrThrow<number>("AUTH_APP.PORT");
 
         this.log();
 
