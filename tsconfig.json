@@ -17,6 +17,11 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
-    "paths": {}
+    "paths": {
+      "@Auth-core/*": ["apps/auth/src/core/*"],
+      "@Auth-infrastructure/*": ["apps/auth/src/infrastructure/*"],
+      "@Auth-application/*": ["apps/auth/src/application/*"],
+      "@Auth-test/*": ["apps/auth/test/*"]
+    }
   }
 }
